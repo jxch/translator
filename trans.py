@@ -27,4 +27,4 @@ if args.vtt_file:
         with open(args.new_file, mode='a', encoding=args.encoding) as nf:
             vtt_trans.trans_vtt(of, nf, args.model, args.engine)
 
-print(args.vtt_file)
+print(parser.print_usage())

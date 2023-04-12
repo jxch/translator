@@ -10,3 +10,4 @@ def trans_vtt(file, new_file, model=trans_type.TransModel.append, engine=trans_t
             t_text = trans(line).replace('酒吧', 'K线')
             new_file.write(' ' + t_text + '\n')
         print('\r', index + 1, end='', flush=True)
+    print('\nend.')

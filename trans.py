@@ -3,6 +3,7 @@ import socket
 import socks
 import core.trans_type as trans_type
 import core.vtt_trans as vtt_trans
+import sys
 
 parser = argparse.ArgumentParser(description='翻译文本和文件')
 parser.add_argument('-p', '--proxy', action='store_true', help="是否开启代理，默认不开启")
@@ -27,4 +28,5 @@ if args.vtt_file:
         with open(args.new_file, mode='a', encoding=args.encoding) as nf:
             vtt_trans.trans_vtt(of, nf, args.model, args.engine)
 
-print(parser.print_usage())
+if len(sys.argv) == 1:
+    print(str(parser.print_usage()).replace('None', ''))

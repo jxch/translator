@@ -17,6 +17,7 @@ parser.add_argument('-S', '--source', help='源语言，默认 auto', default='a
 parser.add_argument('-T', '--target', help='目标语言，默认 zh-CN', default='zh-CN')
 parser.add_argument('-M', '--model', help='翻译类型，默认 append (未完成)', default=trans_type.TransModel.append)
 parser.add_argument('-C', '--encoding', help='文件编码类型，默认 utf-8', default='utf-8')
+parser.add_argument('-D', '--dict_map', help='翻译的映射字典: trade_map')
 args = parser.parse_args()
 
 if args.proxy:
@@ -26,7 +27,7 @@ if args.proxy:
 if args.vtt_file:
     with open(args.vtt_file, mode='r', encoding=args.encoding) as of:
         with open(args.new_file, mode='a', encoding=args.encoding) as nf:
-            vtt_trans.trans_vtt(of, nf, args.model, args.engine)
+            vtt_trans.trans_vtt(of, nf, args.model, args.engine, args.dict_map)
 
 if len(sys.argv) == 1:
     print(str(parser.print_usage()).replace('None', ''))

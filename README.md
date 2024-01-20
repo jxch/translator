@@ -1,5 +1,5 @@
 # translator
-自动翻译软件 
+自动翻译软件，目前只开放Google翻译，使用时注意添加网络代理，或者使用docker将服务部署到境外服务器上，然后使用http请求进行翻译
 
 ## 命令行
 ```text
@@ -28,3 +28,20 @@ options:
                         文件编码类型，默认 utf-8
 ```
 
+## Docker Compose
+```yaml
+version: '3.8'
+services:
+  server:
+    image: jxch/translator
+    ports:
+      - "15500:5000"
+```
+
+## HTTP (Flask)
+```shell
+# powershell
+Invoke-WebRequest -Uri "http://127.0.0.1:5500/trans?text=Hello&target=zh-CN" -Method GET
+# curl
+curl --location 'http://127.0.0.1:5500/trans?text=Hello&target=zh-CN'
+```

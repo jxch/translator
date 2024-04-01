@@ -1,9 +1,5 @@
-from deep_translator import GoogleTranslator
-from core.trans_type import Engine
+import deep_translator
 
 
-def trans(text, source='auto', target='zh-CN', engine=Engine.deep_google):
-    if engine == Engine.deep_google:
-        return GoogleTranslator(source=source, target=target).translate(text)
-    else:
-        raise Exception('not support')
+def trans(text, source='auto', target='zh-CN', engine='GoogleTranslator'):
+    return getattr(deep_translator, engine)(source=source, target=target).translate(text)
